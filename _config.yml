@@ -28,7 +28,7 @@ twitter_username: cybernomad_
 github_username:  cybernomad1
 show_downloads: "false"
 # Build settings
-theme: jekyll-theme-slate
+theme: jekyll-theme-midnight
 plugins:
   - jekyll-feed
 
