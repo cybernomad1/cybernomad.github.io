@@ -28,7 +28,7 @@ merlinServer-Linux-x64 -p 80 -i 0.0.0.0
 ```
 With 80 signfying the port you wish to listen on and 0.0.0.0 being the interface (in this case all)
 
-![MServerStartup]({{site.url}}/assets/blog/OSXPenP1/MserverStartup.png)
+![MServerStartup]({{site.url}}/assets/blog/OSXPenP1/MServerStartup.png)
 
 Agent execution is achieved simply by executing the binary on your target host with the relevant details of your C2 server. I leave it to the reader to identify how they might get this binary onto the target host.
 
@@ -61,7 +61,7 @@ ApFell is a recent addition to my C2 arsenal, mainly due to it being directly ta
 
 On connecting to the WebGui you can easily review what operations are in progress and choose which one you want to connect to.
 
-![APFellS1]({{site.url}}/assets/blog/OSXPenP1/ApFellS1.png)
+![APFellS1]({{site.url}}/assets/blog/OSXPenP1/APFellS1.png)
 
 Payload generation is similarly streamlined by simply accessing the 'Create Components/Create Payload' menu.
 
