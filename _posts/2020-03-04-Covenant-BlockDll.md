@@ -42,7 +42,7 @@ Building off of this it didn’t take much to re-write the teams original shellc
 
 ![Covenant1]({{site.url}}/assets/posts/blockdll/Covenant1.png)
 
-![Permisions2]({{site.url}}/assets/posts/blockdll/permisions2.png)
+![Permisions2]({{site.url}}/assets/posts/blockdll/Permisions2.png)
 
 There are some drawbacks to this technique. Because you are loading specific API calls in order to implement the mitigation, a few endpoint vendors are now specifically flagging this capability, regardless of whether malicious activity follows.
 

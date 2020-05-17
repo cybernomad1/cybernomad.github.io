@@ -12,11 +12,11 @@ tags:
 
 Automating Gadget2Jscript for Covenant C2.
 
-The final code/project can be found [here](https://github.com/cybernomad1/CovToJscript).
+The final code/project can be found [here](https://github.com/cybernomad1/CovToJScript).
 
 I recently found myself in a lab environment that required escalation via phishing utilising malicious HTA files. While this isn’t typically a problem and there are loads of resources out there to utilise this attack vector in order to get RCE – my C2 of choice, Covenant, is lacking this ability when targeting Windows 10/2016.
 
-![CovenantLaunchers]({{site.url}}/assets/posts/CovtoJScript/CovenantLaunchers.png)
+![CovenantLaunchers]({{site.url}}/assets/posts/CovToJScript/CovenantLaunchers.png)
 
 After a bit of GoogleFu a potential solution to this was found, [GadgetToJScript]( https://github.com/med0x2e/GadgetToJScript) by Mohamed El Azaar. This tool generates .NET serialized gadgets that can trigger assembly load/execution when deserialized via BinaryFormatter from JScript, VBScript or VBA. Most importantly, the resulting output is compatible with Windows 10/2016.
 
@@ -35,33 +35,33 @@ Covenant comes with a powerful API that can be used to create Covenant extension
 
 The best way to visualise the API is to load it into Swagger UI.
 
-![SwaggerUI1]({{site.url}}/assets/posts/CovtoJScript/SwaggerUI1.png)
+![SwaggerUI1]({{site.url}}/assets/posts/CovToJScript/SwaggerUI1.png)
 
 In order to interact with the various Covenant API functions, authentication to ‘api/users/login’ with valid user credentials is required.
 
-![SwaggerUI2]({{site.url}}/assets/posts/CovtoJScript/SwaggerUI2.png)
+![SwaggerUI2]({{site.url}}/assets/posts/CovToJScript/SwaggerUI2.png)
 
 The below code utilises System.Text.Json to serialise user submitted credentials into JSON format and unserialise the post response in order to obtain the resulting authorization token.
 
-![APIDoStuff]({{site.url}}/assets/posts/CovtoJScript/APIDoStuff.png)
+![APIDoStuff]({{site.url}}/assets/posts/CovToJScript/APIDoStuff.png)
 
-![AuthenicateModel]({{site.url}}/assets/posts/CovtoJScript/AuthenticateModel.png)
+![AuthenicateModel]({{site.url}}/assets/posts/CovToJScript/AuthenticateModel.png)
 
-![Authenticate]({{site.url}}/assets/posts/CovtoJScript/Authenticate.png)
+![Authenticate]({{site.url}}/assets/posts/CovToJScript/Authenticate.png)
 
 We can then utilise this authorisation token to connect to the binary grunt API – allowing us to obtain the base64 encoded launcher string.
 
-![SwaggerLauncherAPI]({{site.url}}/assets/posts/CovtoJScript/SwaggerLauncherAPI.png)
+![SwaggerLauncherAPI]({{site.url}}/assets/posts/CovToJScript/SwaggerLauncherAPI.png)
 
 The below code once again uses System.Text.Json to convert the json response into a class instance we can query as needed for relevant information.
 
-![BinaryLauncherModel]({{site.url}}/assets/posts/CovtoJScript/BinaryLauncherModel.png)
+![BinaryLauncherModel]({{site.url}}/assets/posts/CovToJScript/BinaryLauncherModel.png)
 
-![GetBinaryLauncher]({{site.url}}/assets/posts/CovtoJScript/GetBinaryLauncher.png)
+![GetBinaryLauncher]({{site.url}}/assets/posts/CovToJScript/GetBinaryLauncher.png)
 
 This effectively ends my contribution to the code. The rest of the automation essentially revolves around interfacing with [CSDonut](https://github.com/n1xbyte/donutCS) (a .Net core instance of Donut) and [GadgetToJScript](https://github.com/med0x2e/GadgetToJScript).
 
-![Workflow]({{site.url}}/assets/posts/CovtoJScript/Workflow.png)
+![Workflow]({{site.url}}/assets/posts/CovToJScript/Workflow.png)
 
 ## Usage
 Usage is very similar to the original GadgetToJscript, with the only new requirements being a valid Covenant username and password along with the admin interface URL.
@@ -78,6 +78,6 @@ Usage is very similar to the original GadgetToJscript, with the only new require
                             components
 -h, --help=VALUE           Show Help
 ```
-![Usage]({{site.url}}/assets/posts/CovtoJScript/Usage.png)
+![Usage]({{site.url}}/assets/posts/CovToJScript/Usage.png)
 
 Execution of the resulting file will result in a covenant grunt being executed in memory, whilst also bypassing both AMSI and current instances of Defender AV.
