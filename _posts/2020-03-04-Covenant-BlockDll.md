@@ -25,7 +25,7 @@ A bit of GoogleFu and we are presented with the following options for applicable
 
 ![MitigationOptions]({{site.url}}/assets/posts/blockdll/MitigationOptions.png)
 
-Ideally, we want to use ** ‘CREATION_MITIGATION_POLICY_BLOCK_NON_MICROSOFT_BINARIES_ALWAYS_ON’ ** as this should only allow Microsoft binaries to inject into our process.
+Ideally, we want to use **CREATION_MITIGATION_POLICY_BLOCK_NON_MICROSOFT_BINARIES_ALWAYS_ON** as this should only allow Microsoft binaries to inject into our process.
 
 In order to accomplish this in C# we can create the relevant flag attribute.
 
