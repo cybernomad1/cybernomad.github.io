@@ -94,7 +94,8 @@ cme smb 10.10.10.161 -u userlist -p 'Welcome123!'
 ![cme1]({{site.url}}/assets/CTF/HTB-Forest/cme1.png)
 
 No common passwords worked with this method.
-*when password spaying in a real-life environment it is essential that you identify what lockout policy is in place to ensure you do not lock out accounts*
+
+*When password spaying in a real-life environment it is essential that you identify what lockout policy is in place to ensure you do not lock out accounts*
 
 As the Kerberos service is accessible, are next option is to identifiy if we can grab any ticket based hashes. Typically you require credentials in order to acquire Kerberos ticket hashes, however if an account has ‘pre-authentication’ turned off, you only need an account name. This is far better explain by the following [blog](https://www.harmj0y.net/blog/activedirectory/roasting-as-reps/).
 
@@ -171,6 +172,7 @@ It is worth noting that there is some form of Cron Job in place designed to rese
 
 ### ACLPwn.py
 If you’re thinking this methodology is a bit long winded in terms of both identifying an attack path, and exploiting it there is an automated way, [ACLPwn](https://github.com/fox-it/aclpwn.py).
+
 *ACLPwn.py is a tool that interacts with BloodHound to identify and exploit ACL based privilege escalation paths. It takes a starting and ending point and will use Neo4j pathfinding algorithms to find the most efficient ACL based privilege escalation path.*
 
 By using the ‘-dry’ command you can use ACLPwn.py to identify any attack paths that might be present.
@@ -186,7 +188,7 @@ If working in a live environment, it is essentially that you take note of the �
 
 We can now use secretsdump.py as before to dump ntds.dit user hashes.
 
-#PTH
+### PTH
 Now we have an valid administrator hash, we could attempt to crack it, or we can simply utilise the NTLM hash to authenticate to the box by ‘passing the hash’.
 
 There are multiple tools that will allow you to do this, however I decided to stick with evil-winrm and use the -H flag to authenticate using the administrator hash.
