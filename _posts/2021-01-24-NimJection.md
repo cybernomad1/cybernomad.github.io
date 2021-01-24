@@ -12,17 +12,17 @@ Playing around with NIM for use as a covenant staging implant/AV evasion
 
 So recently my twitter feed has been full of different people mentioning NIM and its virtues for you in staging implants for AV evasion - so I thought I’d have play with it over a weekend and see if I could get a workflow working for use with Covenant C2.
 
-To start with, anyone interesting in using NIM offensively needs to look at Marcello Salvati’s [OffensiveNim]([ https://github.com/byt3bl33d3r/OffensiveNim]) repository. I would have been fully lost in the woods without it and ended up using a number of his templates for my final tooling – as you will see if you continue reading, I utilised it a lot…
+To start with, anyone interesting in using NIM offensively needs to look at Marcello Salvati’s [OffensiveNim](https://github.com/byt3bl33d3r/OffensiveNim) repository. I would have been fully lost in the woods without it and ended up using a number of his templates for my final tooling – as you will see if you continue reading, I utilised it a lot…
 
-The first step I took was to construct a quick POC to work out the manual workflow of injecting a Covenant stager using NIM. Handily this isn’t too hard as Covenant now comes with a DonutShellcode launcher, so I downloaded the resulting .bin file then used the PowerShell script created by [s3cur3th1ssh1t]([ https://s3cur3th1ssh1t.github.io/Playing-with-OffensiveNim/]) to create an appliable byte array.
+The first step I took was to construct a quick POC to work out the manual workflow of injecting a Covenant stager using NIM. Handily this isn’t too hard as Covenant now comes with a DonutShellcode launcher, so I downloaded the resulting .bin file then used the PowerShell script created by [s3cur3th1ssh1t](https://s3cur3th1ssh1t.github.io/Playing-with-OffensiveNim/) to create an appliable byte array.
 
 
-![PowershellArray] ({{site.url}}/assets/posts/nimjection/powershell.png)
+![PowershellArray]({{site.url}}/assets/posts/nimjection/powershell.png)
 
 Using the shellcode.nim template file in the OffensiveNim repo I then simply replaced the current shellcode with the above byte array shellcode.
 
 
-![shellcode] ({{site.url}}/assets/posts/nimjection/shellcode.png)
+![shellcode]({{site.url}}/assets/posts/nimjection/shellcode.png)
 
 Compiling and running proves that the general POC process works, even if it is long winded.
 
@@ -30,11 +30,11 @@ Compiling and running proves that the general POC process works, even if it is l
 nim c Shellcode.nim
 ```
 
-![shellcode.exe] ({{site.url}}/assets/posts/nimjection/shellcode.exe.png)
+![shellcode.exe]({{site.url}}/assets/posts/nimjection/shellcode.exe.png)
 
 An additional issue with this is, whilst utilising NIM does reduce the AV detection rate, it’s far from what I’d call stealthy.
 
-![shellcodeVT] ({{site.url}}/assets/posts/nimjection/shellcodeVT.png)
+![shellcodeVT]({{site.url}}/assets/posts/nimjection/shellcodeVT.png)
 
 The above instantly raised a few issue/considerations – even if I could streamline the workflow of creating a stager to execute the covenant shellcode, it’s going to get flagged by a lot of AV. The solution – encryption. In addition to encrypting/decrypting the Covenant shellcode, I decided I also wanted the added flexibility to grab both the initial Covenant shellcode as well as the encrypted payload either locally or from a hosted web server.
 
@@ -197,7 +197,7 @@ I decided to throw in some AMSI bypassing just because – template code is also
 
 2 AV hits – I’ll take that. Especially as changing variable names etc from those in the standard templated might reduce that more.
 
-![VT] ({{site.url}}/assets/posts/nimjection/VT2.png)
+![VT]({{site.url}}/assets/posts/nimjection/VT2.png)
 
 
 
